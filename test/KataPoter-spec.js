@@ -17,4 +17,13 @@ describe('KataPoter', function() {
     basket.addBook(firstBook);
     expect(basket.price()).toBe(8);
   });
+  
+  it('A basket with 2 books costs 16 €', function() {
+    var firstBook = new Book("First book");
+    var secondBook = new Book("Second book");
+    basket.addBook(firstBook);
+    basket.addBook(secondBook);
+    expect(basket.price()).toBe(16);
+  });
+  
 });
