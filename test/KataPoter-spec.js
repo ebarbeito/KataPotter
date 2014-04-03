@@ -37,8 +37,8 @@ describe('Basket', function() {
         basket.addBook(secondBook);
 
       });
-      it('the price is not 16 €', function() {
-        expect(basket.price()).not.toBe(16);
+      it('the price has a 5% discount (15.2 €)', function() {
+        expect(basket.price()).toBe(15.2);
       });
     });
 

@@ -11,7 +11,7 @@ Basket.prototype.price = function() {
   if (this.books.length === 2 &&
     this.books[0].title !== this.books[1].title
     ) {
-    price = 2;
+    price = 15.2;
   }
   return price;
 };
