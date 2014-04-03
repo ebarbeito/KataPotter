@@ -37,7 +37,7 @@ describe('Basket', function() {
       expect(basket.price()).toBe(16);
     });
   });
-  
+
   describe('when the basket has "first book" thrice', function() {
     beforeEach(function() {
       basket.addBook(firstBook);
@@ -54,7 +54,7 @@ describe('Basket', function() {
       basket.addBook(firstBook);
       basket.addBook(secondBook);
     });
-    
+
     it('the price has a 5% discount (15.2 €)', function() {
       expect(basket.price()).toBe(15.2);
     });
@@ -67,9 +67,21 @@ describe('Basket', function() {
       basket.addBook(secondBook);
       basket.addBook(thirdBook);
     });
-    
+
     it('the price has a 10% discount (21.6 €)', function() {
       expect(basket.price()).toBe(21.6);
+    });
+  });
+
+  describe('when the basket has "first", "first" and "second" books', function() {
+    beforeEach(function() {
+      basket.addBook(firstBook);
+      basket.addBook(firstBook);
+      basket.addBook(secondBook);
+    });
+
+    it('the price has a 5% discount of 2 books and 0% for 1 book (23.2)', function() {
+      expect(basket.price()).toBe(23.2);
     });
   });
 
