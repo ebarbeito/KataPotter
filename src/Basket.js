@@ -12,6 +12,8 @@ Basket.prototype.price = function() {
     this.books[0].title !== this.books[1].title
     ) {
     price = 15.2;
+  } else if (this.books.length === 3) {
+    price *= 0.9;
   }
   return price;
 };
