@@ -18,12 +18,19 @@ describe('KataPoter', function() {
     expect(basket.price()).toBe(8);
   });
   
-  it('A basket with 2 books costs 16 €', function() {
+  it('A basket with 2 same books costs 16 €', function() {
+    var firstBook = new Book("First book");
+    basket.addBook(firstBook);
+    basket.addBook(firstBook);
+    expect(basket.price()).toBe(16);
+  });
+  
+  it('A basket with 2 different books does not cost 16 €', function() {
     var firstBook = new Book("First book");
     var secondBook = new Book("Second book");
     basket.addBook(firstBook);
     basket.addBook(secondBook);
-    expect(basket.price()).toBe(16);
+    expect(basket.price()).not.toBe(16);
   });
   
 });
