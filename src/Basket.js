@@ -14,7 +14,8 @@ Basket.prototype.addBook = function(book) {
 Basket.prototype.price = function() {
   var differentBookDiscounts = {
     2: 0.05,
-    3: 0.1
+    3: 0.1,
+    4: 0.20
   };
   var price = this.numBooks * 8;
   var discount = 0;
