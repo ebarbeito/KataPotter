@@ -7,4 +7,11 @@ describe('KataPoter', function() {
     expect(basket.price()).toBe(0);
   });
 
+
+  it('A basket with 1 book costs 8 €', function() {
+    var basket = new Basket();
+    var firstBook = new Book("First book");
+    basket.addBook(firstBook);
+    expect(basket.price()).toBe(8);
+  });
 });
