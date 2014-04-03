@@ -84,5 +84,16 @@ describe('Basket', function() {
       expect(basket.price()).toBe(23.2);
     });
   });
+  describe('when the basket has 2 "first" books and 2 "second" books', function() {
+    beforeEach(function() {
+      basket.addBook(firstBook);
+      basket.addBook(firstBook);
+      basket.addBook(secondBook);
+      basket.addBook(secondBook);
+    });
 
+    it('the price has to apply twice 5% of discount(30.4)', function() {
+      expect(basket.price()).toBe(30.4);
+    });
+  });
 });
