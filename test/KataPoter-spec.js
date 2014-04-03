@@ -31,7 +31,7 @@ describe('Basket', function() {
       });
     });
 
-    describe('and a different books is added', function() {
+    describe('and a different book is added', function() {
       beforeEach(function() {
         var secondBook = new Book("Second book");
         basket.addBook(secondBook);
@@ -39,6 +39,16 @@ describe('Basket', function() {
       });
       it('the price has a 5% discount (15.2 €)', function() {
         expect(basket.price()).toBe(15.2);
+      });
+
+      describe('and a different book is added', function() {
+        beforeEach(function() {
+          var thirdBook = new Book("Third book");
+          basket.addBook(thirdBook);
+        });
+        it('the price has a 10% discount (21.6 €)', function() {
+          expect(basket.price()).toBe(21.6);
+        });
       });
     });
 
