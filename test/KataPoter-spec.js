@@ -128,4 +128,21 @@ describe('Basket', function() {
     });
   });
 
+  describe('when the basket has 2 "first" books, 2 "second" books, 2 "third" books, 1 "fourth" book and 1 "fifth" book', function() {
+    beforeEach(function() {
+      basket.addBook(firstBook);
+      basket.addBook(firstBook);
+      basket.addBook(secondBook);
+      basket.addBook(secondBook);
+      basket.addBook(thirdBook);
+      basket.addBook(thirdBook);
+      basket.addBook(fourthBook);
+      var fifthBook = new Book("Fifth book");
+      basket.addBook(fifthBook);
+    });
+
+    it('the price has to apply twice 20% of discount(51.2)', function() {
+      expect(basket.price()).toBe(51.2);
+    });
+  });
 });
