@@ -1,4 +1,5 @@
 var Basket = require('../src/Basket.js').Basket;
+var Book = require('../src/Book.js').Book;
 
 describe('KataPoter', function() {
 
@@ -6,7 +7,6 @@ describe('KataPoter', function() {
     var basket = new Basket();
     expect(basket.price()).toBe(0);
   });
-
 
   it('A basket with 1 book costs 8 €', function() {
     var basket = new Basket();
