@@ -13,27 +13,20 @@ Basket.prototype.addBook = function(book) {
 
 Basket.prototype.price = function() {
   var differentBookDiscounts = {
-    0: 0,
-    1: 0,
     2: 0.05,
     3: 0.1
   };
   var price = this.numBooks * 8;
   var discount = 0;
-  if (areDifferent(this.books)) {
-    discount = differentBookDiscounts[this.numBooks] * price;
+  var numBooks = numDifferentBooks(this.books);
+  if (numBooks > 1) {
+    discount = differentBookDiscounts[numBooks] * 8 * numBooks;
   }
   return price - discount;
-}
-;
+};
 
-var areDifferent = function(books) {
-  for (var title in books) {
-    if (books[title] !== 1) {
-      return false;
-    }
-  }
-  return true;
+var numDifferentBooks = function(books) {
+  return Object.keys(books).length;
 };
 
 module.exports.Basket = Basket;
