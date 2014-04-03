@@ -1,36 +1,46 @@
 var Basket = require('../src/Basket.js').Basket;
 var Book = require('../src/Book.js').Book;
 
-describe('KataPoter', function() {
+describe('Basket', function() {
   var basket;
-  
+
   beforeEach(function() {
     basket = new Basket();
   });
+  describe('empty', function() {
+    it('the price is 0 €', function() {
+      expect(basket.price()).toBe(0);
+    });
+  });
+  describe('when first book is added', function() {
+    var firstBook;
+    beforeEach(function() {
+      firstBook = new Book("First book");
+      basket.addBook(firstBook);
 
-  it('an empty basket book costs 0', function() {
-    expect(basket.price()).toBe(0);
-  });
+    });
+    it('the price is 8 €', function() {
+      expect(basket.price()).toBe(8);
+    });
+    describe('and the same book is added again', function() {
+      beforeEach(function() {
+        basket.addBook(firstBook);
+      });
+      it('the price is 16 €', function() {
+        expect(basket.price()).toBe(16);
+      });
+    });
 
-  it('A basket with 1 book costs 8 €', function() {
-    var firstBook = new Book("First book");
-    basket.addBook(firstBook);
-    expect(basket.price()).toBe(8);
+    describe('and a different books is added', function() {
+      beforeEach(function() {
+        var secondBook = new Book("Second book");
+        basket.addBook(secondBook);
+
+      });
+      it('the price is not 16 €', function() {
+        expect(basket.price()).not.toBe(16);
+      });
+    });
+
   });
-  
-  it('A basket with 2 same books costs 16 €', function() {
-    var firstBook = new Book("First book");
-    basket.addBook(firstBook);
-    basket.addBook(firstBook);
-    expect(basket.price()).toBe(16);
-  });
-  
-  it('A basket with 2 different books does not cost 16 €', function() {
-    var firstBook = new Book("First book");
-    var secondBook = new Book("Second book");
-    basket.addBook(firstBook);
-    basket.addBook(secondBook);
-    expect(basket.price()).not.toBe(16);
-  });
-  
 });
