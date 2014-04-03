@@ -6,13 +6,14 @@ describe('Basket', function() {
   var firstBook;
   var secondBook;
   var thirdBook;
+  var fourthBook;
 
   beforeEach(function() {
     basket = new Basket();
     firstBook = new Book("First book");
     secondBook = new Book("Second book");
     thirdBook = new Book("Third book");
-
+    fourthBook = new Book("Fourth book");
   });
 
   describe('empty', function() {
@@ -104,12 +105,27 @@ describe('Basket', function() {
       basket.addBook(firstBook);
       basket.addBook(secondBook);
       basket.addBook(thirdBook);
-      var fourthBook = new Book("Fourth book");
       basket.addBook(fourthBook);
     });
 
-    it('the price has to apply twice 20% of discount(30.4)', function() {
+    it('the price has to apply 20% of discount(30.4)', function() {
       expect(basket.price()).toBe(25.6);
     });
   });
+
+  describe('when the basket has a "first", "second", "third", "fourth" and "fifth" books', function() {
+    beforeEach(function() {
+      basket.addBook(firstBook);
+      basket.addBook(secondBook);
+      basket.addBook(thirdBook);
+      basket.addBook(fourthBook);
+      var fifthBook = new Book("Fifth book");
+      basket.addBook(fifthBook);
+    });
+
+    it('the price has to apply 25% of discount(30)', function() {
+      expect(basket.price()).toBe(30);
+    });
+  });
+
 });
