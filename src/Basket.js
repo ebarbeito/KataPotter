@@ -9,10 +9,10 @@ Basket.prototype.addBook = function(book) {
 Basket.prototype.price = function() {
   var price = this.books.length * 8;
   if (this.books.length === 2 &&
-    this.books[0].title !== this.books[1].title
-    ) {
+    this.books[0].title !== this.books[1].title) {
     price = 15.2;
-  } else if (this.books.length === 3) {
+  } else if (this.books.length === 3 &&
+    this.books[0].title !== this.books[1].title) {
     price *= 0.9;
   }
   return price;
