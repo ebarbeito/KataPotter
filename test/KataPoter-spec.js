@@ -37,6 +37,17 @@ describe('Basket', function() {
       expect(basket.price()).toBe(16);
     });
   });
+  
+  describe('when the basket has "first book" thrice', function() {
+    beforeEach(function() {
+      basket.addBook(firstBook);
+      basket.addBook(firstBook);
+      basket.addBook(firstBook);
+    });
+    it('the price is 24 €', function() {
+      expect(basket.price()).toBe(24);
+    });
+  });
 
   describe('when the basket has "first" and "second" books', function() {
     beforeEach(function() {
